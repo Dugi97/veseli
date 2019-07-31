@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ScheduleController!{% endblock %}
+
+{% block body %}
+<form method="post" action="/schedule/">
+
+    <label>Name</label> <br>
+    <input type="text" name="username"> <br>
+
+    <label>Email</label> <br>
+    <input type="text" name="email"> <br>
+
+    <label>Phone number</label> <br>
+    <input type="number" name="phone"> <br>
+
+    <label>Boat</label> <br>
+    <select name="boat">
+
+    {% for boat in boats %}
+
+        <option value="{{ boat.type }}">{{ boat.type }}</option>
+
+    {% endfor %}
+    </select> <br>
+
+    <label>Lunch</label> <br>
+    <select name="lunch">
+
+        {% for lunch in lunches %}
+
+            <option value="{{ lunch.type }}">{{ lunch.type }}</option>
+
+        {% endfor %}
+    </select> <br>
+
+    <label>Periods</label> <br>
+
+    {% for timeSlot in timeSlots %}
+        <input type="radio" name="timeSlot" value="{{ timeSlot.period }}">
+        <label>{{ timeSlot.period }} ({{ schedules }}/{{ timeSlot.capacity }})</label>
+
+    {% endfor %} <br>
+
+    <input type="submit" name="send" name="send">
+
+</form>
+{% endblock %}

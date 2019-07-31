@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boat index{% endblock %}
+
+{% block body %}
+    <h1>Boat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Capacaty</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for boat in boats %}
+            <tr>
+                <td>{{ boat.id }}</td>
+                <td>{{ boat.type }}</td>
+                <td>{{ boat.capacaty }}</td>
+                <td>
+                    <a href="{{ path('boat_show', {'id': boat.id}) }}">show</a>
+                    <a href="{{ path('boat_edit', {'id': boat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('boat_new') }}">Create new</a>
+{% endblock %}
