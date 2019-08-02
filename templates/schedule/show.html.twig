@@ -1,11 +1,54 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Schedule{% endblock %}
+
 {% block body %}
+    <h1>Schedule</h1>
 
-    {{ "Aaaaaa" }}
-    {% for schedule in schedules %}
+     {% for schedule in allSchedules %}
 
-        {{ schedule.id }}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ schedule.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ schedule.username }}</td>
+            </tr>
+
+
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ schedule.phone }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ schedule.email }}</td>
+            </tr>
+
+            <tr>
+                <th>Boat size</th>
+                <td>{{ schedule.boat.type }}</td>
+            </tr>
+
+            <tr>
+                <th>Lunch type</th>
+                <td>{{ schedule.lunch.type }}</td>
+            </tr>
+
+            <tr>
+                <th>Time</th>
+                <td>{{ schedule.timeSlot.period }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <a href="{{ path('delete', {'id': schedule.id}) }}">Delete</a>
 
     {% endfor %}
+    <a href="{{ path('schedule')}}">Add new</a>
+
 {% endblock %}
